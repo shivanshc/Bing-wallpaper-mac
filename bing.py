@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-from PIL import Image
-from io import StringIO
+import wget
 
 resp = requests.get("http://www.bing.com")
 soup = BeautifulSoup(resp.text, "html.parser")
@@ -14,8 +13,4 @@ for i in instance:
         imgURL = jsContent[beginIndex:endIndex]
         imgURL = "http://www.bing.com/" + imgURL
 
-resp = requests.get(imgURL)
-print type(resp.content)
-i = Image.open((resp.content))
-
-
+wget.download(imgURL)
