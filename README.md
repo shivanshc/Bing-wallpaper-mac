@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/shivanshc/Bing-wallpaper-mac.svg?branch=master)](https://travis-ci.org/shivanshc/Bing-wallpaper-mac)
+
 A tool to set your MacOS/Linux wallpaper to be the same as Bing wallpaper every day.
 
 Setup Instructions :
