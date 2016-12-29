@@ -11,7 +11,12 @@ USER_DIR = os.getenv("HOME")
 
 
 def getImageURL():
-    resp = requests.get("http://www.bing.com")
+    resp = None
+    while resp is None:
+        try:
+            resp = requests.get("http://www.bing.com")
+        except:
+            resp = None
     soup = BeautifulSoup(resp.text, "html.parser")
     instance = soup.find_all("script", {"type": "text/javascript"})
     for i in instance:
