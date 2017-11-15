@@ -5,7 +5,7 @@ import sqlite3
 import subprocess
 import os
 
-DB_PATH = 'Library/Application Support/Dock/desktoppicture.db'
+IMAGE_PATH = 'Library/Application Support/Dock/Bing/background.jpg'
 IMAGE_FOLDER = 'Library/Application Support/Dock/Bing'
 USER_DIR = os.getenv("HOME")
 
@@ -36,12 +36,8 @@ def downloadImage(downloadDir):
 
 
 def updateBackground(imgPath):
-    dbPath = os.path.join(USER_DIR, DB_PATH)
-    conn = sqlite3.connect(dbPath)
-    c = conn.cursor()
-    c.execute('UPDATE data SET value=?', (imgPath,))
-    conn.commit()
-    conn.close()
+    imagePath = os.path.join(USER_DIR, IMAGE_PATH)
+    subprocess.run(['ln', '-s', '-F', imgPath, imagePath])
 
 
 def getDownloadPath():
